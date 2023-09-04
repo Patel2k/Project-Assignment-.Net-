@@ -1,0 +1,7 @@
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\bin\Debug\Day-4.exe.config
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\bin\Debug\Day-4.exe
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\bin\Debug\Day-4.pdb
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\obj\Debug\Day-4.csproj.AssemblyReference.cache
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\obj\Debug\Day-4.csproj.CoreCompileInputs.cache
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\obj\Debug\Day-4.exe
+C:\Users\apatelka\source\repos\Proj4-ConsoleApp\Day-4\obj\Debug\Day-4.pdb

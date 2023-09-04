@@ -1,0 +1,7 @@
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\bin\Debug\ProjectAssignment-01.exe.config
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\bin\Debug\ProjectAssignment-01.exe
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\bin\Debug\ProjectAssignment-01.pdb
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\obj\Debug\ProjectAssignment-01.csproj.AssemblyReference.cache
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\obj\Debug\ProjectAssignment-01.csproj.CoreCompileInputs.cache
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\obj\Debug\ProjectAssignment-01.exe
+C:\Users\apatelka\source\repos\ProjectData-01\ProjectAssignment-01\obj\Debug\ProjectAssignment-01.pdb
