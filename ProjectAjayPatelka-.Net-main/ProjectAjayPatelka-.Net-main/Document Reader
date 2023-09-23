@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Data Extraction</title>
+</head>
+<body>
+    <h1>PDF Data Extraction</h1>
+    
+    <!-- File upload input -->
+    <input type="file" id="pdfInput" accept=".pdf">
+    
+    <!-- Display table for extracted data -->
+    <table border="1" id="pdfData">
+        <thead>
+            <tr>
+                <th>Buyer/Seller</th>
+                <th>Transaction Type</th>
+                <th>Business Segment</th>
+                <th>Product Info</th>
+                <th>Loan Amount</th>
+                <th>Sale Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be populated dynamically using JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('pdfInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                extractDataFromPDF(file);
+            }
+        });
+
+        function extractDataFromPDF(pdfFile) {
+            const tableBody = document.querySelector('#pdfData tbody');
+
+            const fileReader = new FileReader();
+
+            fileReader.onload = function() {
+                const typedArray = new Uint8Array(this.result);
+                const pdfData = new Blob([typedArray], { type: 'application/pdf' });
+
+                pdfjsLib.getDocument(pdfData).promise.then(pdf => {
+                    tableBody.innerHTML = ''; // Clear existing table rows
+
+                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                        pdf.getPage(pageNum).then(page => {
+                            page.getTextContent().then(textContent => {
+                                const text = textContent.items.map(item => item.str).join(' ');
+                                const data = parsePDFText(text);
+
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td>${data.buyerSeller || ''}</td>
+                                    <td>${data.transactionType || ''}</td>
+                                    <td>${data.businessSegment || ''}</td>
+                                    <td>${data.productInfo || ''}</td>
+                                    <td>${data.loanAmount || ''}</td>
+                                    <td>${data.salePrice || ''}</td>
+                                `;
+
+                                tableBody.appendChild(row);
+                            });
+                        });
+                    }
+                }).catch(error => {
+                    console.error('Error loading PDF:', error);
+                });
+            };
+
+            fileReader.readAsArrayBuffer(pdfFile);
+        }
+
+        function parsePDFText(text) {
+            const data = {};
+
+            // Implement your logic to extract data from the text (e.g., using regular expressions)
+            // Example: Extract Buyer/Seller
+            const buyerSellerMatch = text.match(/Buyer\/Seller: (.+?)\b/);
+            if (buyerSellerMatch) {
+                data.buyerSeller = buyerSellerMatch[1];
+            }
+
+            // Extract other fields similarly...
+
+            return data;
+        }
+    </script>
+
+    <!-- Include PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.js"></script>
+</body>
+</html>
